@@ -38,6 +38,6 @@ app_wheel4_t chassis_get_wheel_reference(void)
 /* 停止底盘层输出命令。 */
 void chassis_stop(void)
 {
-    g_chassis_cmd = (app_velocity_t){0.0f, 0.0f, 0.0f};
-    g_wheel_ref = (app_wheel4_t){0, 0, 0, 0};
+    g_chassis_cmd = (app_velocity_t){0.0f, 0.0f, 0.0f}
+    g_wheel_ref = (app_wheel4_t){0, 0, 0, 0}
 }
