@@ -1,0 +1,1 @@
+GEN_CSRCS += lv_font_ALMM_48.c lv_font_ALMM_16.c lv_font_ALMM_23.c

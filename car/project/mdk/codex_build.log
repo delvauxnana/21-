@@ -1,0 +1,7 @@
+*** Using Compiler 'V6.24', folder: 'D:\MyCpr\APP\APPStudy\APPSoftware\Keill\MDK-ARM\ARM\ARMCLANG\Bin'
+Build target 'nor_sdram_zf_dtcm'
+compiling motion_manager.c...
+linking...
+Program Size: Code=91968 RO-data=10028 RW-data=284 ZI-data=13468  
+".\Objects\rt1064.axf" - 0 Error(s), 0 Warning(s).
+Build Time Elapsed:  00:00:02
