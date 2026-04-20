@@ -23,7 +23,6 @@
 #include "system_state.h"
 #include "vision_map.h"
 #include "ws2812.h"
-
 typedef enum
 {
     STATUS_LED_BOOT = 0,

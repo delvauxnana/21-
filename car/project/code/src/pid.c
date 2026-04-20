@@ -1,5 +1,4 @@
 #include "pid.h"
-
 /* 限制 PID 内部变量和输出范围。 */
 static int32_t pid_limit(int32_t value, int32_t limit)
 {
