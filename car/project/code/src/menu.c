@@ -691,6 +691,9 @@ bool menu_update_20ms(void)
         case MENU_PAGE_PARAM:
             return menu_handle_param_page(up_event, down_event, ok_event, back_event);
 
+        case MENU_PAGE_MAP:
+            return menu_handle_readonly_page(back_event);
+
         default:
             menu_enter_home();
             return true;

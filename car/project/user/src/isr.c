@@ -91,14 +91,7 @@ void LPUART4_IRQHandler(void)
 {
     if (kLPUART_RxDataRegFullFlag & LPUART_GetStatusFlags(LPUART4))
     {
-        if (NULL != flexio_camera_uart_handler)
-        {
-            flexio_camera_uart_handler();
-        }
-
-        gnss_uart_callback();
-
-        /* 视觉模块串口接收 → 环形缓冲区 */
+        /* UART4 已专用于视觉模块，不要让其他回调抢走 FIFO 数据 */
         vision_map_uart_isr();
     }
 

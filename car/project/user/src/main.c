@@ -154,7 +154,7 @@ int main(void)
             (void)menu_update_20ms();
         }
 
-        if (display_tick_ms >= 200U)
+        if (display_tick_ms >= 500U)
         {
             display_tick_ms = 0U;
             display_update_100ms();

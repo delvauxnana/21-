@@ -843,10 +843,10 @@ uint8 ips200pro_image_display(uint16 image_id, const void *image, uint16 width, 
     uint8 return_state = 0;
     uint16 send_length;
     uint32 image_size;
-    uint8 const *image_data;
+    const uint8 *image_data;
     IPS200PRO_COMMON_STRUCT(temp, 4);
 
-    image_data = (uint8 *)image;
+    image_data = (const uint8 *)image;
     image_size = width * height * (IMAGE_RGB565 == image_type ? 2 : 1);
     // 任意条件满足，则表示不需要发送图像数据，仅通知屏幕更新边线或矩形
     if((NULL == image) || (!width) || (!height) || (IMAGE_NULL == image_type))
@@ -868,13 +868,17 @@ uint8 ips200pro_image_display(uint16 image_id, const void *image, uint16 width, 
     {
         // 计算本次传输字节数
         send_length = image_size > (IPS200PRO_SPI_LENGTH - sizeof(temp)) ? (IPS200PRO_SPI_LENGTH - sizeof(temp)) : (uint16)image_size;
-        return_state += ips200pro_write_packet(IPS200PRO_WIDGETS_IMAGE, IPS200PRO_COMMON_VALUE, (uint8)image_id, (ips200pro_header_struct *)&temp, sizeof(temp), image_data, send_length);
+        return_state = ips200pro_write_packet(IPS200PRO_WIDGETS_IMAGE, IPS200PRO_COMMON_VALUE, (uint8)image_id, (ips200pro_header_struct *)&temp, sizeof(temp), image_data, send_length);
+        if(0 != return_state)
+        {
+            break;
+        }
         image_data += send_length;
         image_size -= send_length;
         temp.data[2].uint8_data[0] = 0;
     }while(image_size);
 
-    return return_state;
+    return (0 == return_state) ? 0 : 1;
 }
 
 uint8 ips200pro_image_draw_line(uint16 image_id, uint8 line_id, void *line_data, uint16 line_length, ips200pro_image_line_type_enum data_type, uint16 color)

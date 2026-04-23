@@ -3,7 +3,7 @@
 
 #include "zf_common_headfile.h"
 
-#define MENU_HOME_ITEM_COUNT        (4U)
+#define MENU_HOME_ITEM_COUNT        (5U)
 #define MENU_MOTION_ITEM_COUNT      (2U)   /* 轴测试 / 单轮测试 两个子入口 */
 #define MENU_AXIS_TEST_ITEM_COUNT   (7U)   /* 启停+轴向+目标+限速+斜率+电机输出+编码器 */
 #define MENU_WHEEL_TEST_ITEM_COUNT  (5U)   /* 启停+电机选择+速度+电机输出+编码器 */
@@ -18,6 +18,7 @@ typedef enum
     MENU_PAGE_MOTION,      /* 运动测试子菜单选择页 */
     MENU_PAGE_POSE,
     MENU_PAGE_PARAM,
+    MENU_PAGE_MAP,         /* 地图实时显示 */
     MENU_PAGE_AXIS_TEST,   /* 轴移动测试子页 */
     MENU_PAGE_WHEEL_TEST   /* 单轮测试子页 */
 } menu_page_t;
